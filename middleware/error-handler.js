@@ -9,7 +9,7 @@ const errorHandler = (err, req, res, next) =>{
         if (typeof (err) === 'string') {
             return res.status(400).json({ message:"Custom Application String Error"});
         }
-    
+        
         else if (err instanceof mongoose.Error){
             return res.status(400).json({ message:"Database Error"});
 
@@ -23,6 +23,9 @@ const errorHandler = (err, req, res, next) =>{
         else if (err.name === 'UnauthorizedError') {
             // jwt authentication error
             return res.status(401).json({message: 'Token UnauthorizedError' });
+        }else if(err.status === 404){
+            return res.status(404).json({message: 'Not Found' });
+
         }
         else {
         return res.status(500).json({ code:  500, message: "Internal Server Error"})
