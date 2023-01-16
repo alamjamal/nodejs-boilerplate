@@ -1,0 +1,1 @@
+module.exports.agencyValidation=require('./agency.validate')
