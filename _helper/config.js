@@ -5,7 +5,9 @@ const createError = require('http-errors')
 
 
 
-dotenv.config('/etc/secrets/.env');
+// dotenv.config('/etc/secrets/.env');
+dotenv.config({ path: path.join(__dirname, '../.env') });
+
 
 const envVarsSchema = Joi.object()
   .keys({
