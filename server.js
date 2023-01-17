@@ -35,7 +35,7 @@ const cleanUp =  (eventType) => {
 };
 
 
-if (config.env==="production"){
+if (config.env==="development"){
   [`exit`, `SIGINT`, `SIGUSR1`, `SIGUSR2`,  `SIGTERM`, 'uncaughtException','unhandledRejection']
   .forEach((eventType) => {
     process.on(eventType, cleanUp.bind(null, eventType));
